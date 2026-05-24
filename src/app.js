@@ -47,8 +47,8 @@ app.use(errorHandler);
 const initializeApp = async () => {
   try {
     console.log("🚀 Initializing Provenance API...");
-    await initializeModels();
     setupAssociations();
+    await initializeModels();
     startJobs();
     console.log("✅ Provenance API initialized successfully");
     return true;

@@ -46,8 +46,9 @@ const enablePostgis = async () => {
 const initializeModels = async () => {
   try {
     console.log("🔄 Creating/updating tables...");
-    await User.sync({ force: false, alter: true });
+    // enterprises must sync before users (users.enterprise_id FK)
     await Enterprise.sync({ force: false, alter: false });
+    await User.sync({ force: false, alter: true });
     await Product.sync({ force: false, alter: false });
     await Batch.sync({ force: false, alter: false });
     await ProvenanceEvent.sync({ force: false, alter: false });

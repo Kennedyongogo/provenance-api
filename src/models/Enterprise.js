@@ -68,10 +68,7 @@ module.exports = (sequelize) => {
       verified_by: {
         type: DataTypes.UUID,
         allowNull: true,
-        references: {
-          model: "users",
-          key: "id",
-        },
+        // No DB FK here — users table is created after enterprises (circular with users.enterprise_id)
       },
     },
     {
